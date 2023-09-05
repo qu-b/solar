@@ -1,0 +1,151 @@
+/* Hide the up and down arrows for number input */
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+	-webkit-appearance: none;
+	margin: 0;
+}
+
+input[type="number"] {
+	-moz-appearance: textfield;
+}
+
+/* Global font setting */
+.title {
+	font-family: 'Climate Crisis', cursive;
+	text-align: center;
+	margin-bottom: 20px;
+}
+
+.title h1 {
+	font-size: 36px;
+	margin-bottom: 10px;
+}
+
+.title-line {
+	width: 60px;
+	height: 1px;
+	background-color: #5b5b5b;
+	margin: 0 auto;
+}
+
+body {
+	font-family: 'PT Sans Narrow', sans-serif;
+}
+
+/* Common module styles */
+.module-card {
+	background-color: #ffffff;
+	border-radius: 10px;
+	padding: 20px;
+	box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+	flex: 1;
+	margin-bottom: 20px;
+	border: 1px solid #ffea61;
+}
+
+.module-title {
+	text-align: center;
+	margin-top: 0;
+	margin-bottom: 20px;
+}
+
+.calculator-container {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 20px;
+	max-width: 768px;
+	margin: 0 auto;
+}
+
+.calculator-module,
+.chart-module {
+	flex: 1;
+	background-color: #ffffff;
+	border-radius: 10px;
+	padding: 20px;
+	box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+	margin-bottom: 20px;
+	border: 1px solid #ffea61;
+}
+
+/* Unique module styles */
+.calculator-module h1,
+.chart-module h1 {
+	margin-bottom: 10px;
+}
+
+.calculator-module label,
+.chart-module label {
+	display: block;
+	margin-bottom: 10px;
+}
+
+.input-group {
+	display: flex;
+	flex-direction: row;
+	align-items: baseline;
+	margin-bottom: 10px;
+}
+
+.input-group label {
+	margin-bottom: 5px;
+}
+
+.input-wrapper {
+	display: flex;
+	align-items: baseline;
+	margin-left: 15px;
+
+}
+
+.input-wrapper input {
+	width: 30px;
+	text-align: right;
+	margin-right: 5px;
+}
+
+.input-unit {
+	margin-left: 5px;
+}
+
+.result-label {
+	text-align: center;
+	margin-top: 20px;
+}
+
+.result-output-wrapper {
+	text-align: center;
+}
+
+.result-output {
+	font-size: 36px;
+	color: #ffea61;
+}
+
+/* Adjustments for canvas */
+#energyOutputChart,
+#savingsChart {
+	display: block;
+	margin: auto;
+}
+
+/* Map Section */
+#map {
+	height: 400px;
+	width: 50%;
+	margin: 10px;
+}
+
+#map-section {
+	flex: 1;
+	background-color: #ffffff;
+	border-radius: 10px;
+	padding: 20px;
+	box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+	margin-bottom: 20px;
+	border: 1px solid #ffea61;
+	display: flex;
+	flex-wrap: wrap;
+	gap: 20px;
+	max-width: 768px;
+}

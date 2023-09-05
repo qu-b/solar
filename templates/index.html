@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>Solar</title>
+	<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Climate+Crisis&family=PT+Sans+Narrow&display=swap"
+		rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="../static/style.css">
+	<link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+</head>
+
+<body>
+	<div class="title">
+		<h1>SOLAR</h1>
+		<div class="title-line"></div>
+	</div>
+	<div class="calculator-container">
+
+		<!-- Map Section -->
+		<div id="map-section">
+			<div id="map"></div>
+			<form id="address-form">
+				<label for="address">Enter your address:</label>
+				<input type="text" id="address" name="address" required>
+				<button type="submit">Submit</button>
+			</form>
+		</div>
+	</div>
+
+	<div class="calculator-container">
+		<!-- Solar Energy Calculator Section -->
+		<div class="calculator-module">
+			<h1 class="module-title">Solar Energy Calculator</h1>
+			<div class="calculator-content">
+				<div class="calculator-text">
+					<form id="calculator-form">
+						<div class="input-group">
+							<label>Installation Size:</label>
+							<div class="input-wrapper">
+								<input type="number" id="installation_size" name="installation_size" min="0">
+								<span class="input-unit">m<sup>2</sup></span>
+							</div>
+						</div>
+						<div class="input-group">
+							<label>Solar Radiation:</label>
+							<div class="input-wrapper">
+								<input type="number" id="solar_radiation" name="solar_radiation" min="0">
+								<span class="input-unit">kWh/m<sup>2</sup>/day</span>
+							</div>
+						</div>
+					</form>
+
+					<div class="result-label">
+						<span>Estimated Solar Energy Output:</span>
+						<div class="result-output-wrapper">
+							<strong><span id="output" class="result-output">N/A</span></strong> kWh/day
+						</div>
+					</div>
+
+				</div>
+			</div>
+		</div>
+
+		<!-- Chart Section -->
+		<div class="chart-module">
+			<h1 class="module-title">Solar Energy Output Chart</h1>
+			<canvas id="energyOutputChart" width="400" height="200"></canvas>
+		</div>
+	</div>
+
+	<div class="calculator-container">
+		<!-- Energy Savings Calculator Section -->
+		<div class="calculator-module">
+			<h1 class="module-title">Savings Calculator</h1>
+			<div class="calculator-content">
+				<div class="calculator-text">
+					<form id="savings-calculator-form">
+						<label>Current Energy Consumption (kWh/month):<input type="number"
+								id="current_energy_consumption" name="current_energy_consumption" min="0"></label>
+						<label>Electricity Rate (CHF/kWh):<input type="number" id="electricity_rate"
+								name="electricity_rate" min="0"></label>
+					</form>
+					<label class="result-label">Estimated Savings: <span id="savings_output">N/A</span>
+						CHF/month</label>
+				</div>
+			</div>
+		</div>
+
+		<!-- Savings Chart Section -->
+		<div class="chart-module">
+			<h1 class="module-title">Savings Chart</h1>
+			<canvas id="savingsChart" width="400" height="200"></canvas>
+		</div>
+	</div>
+
+	<script src="/static/main.js"></script>
+	<script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+</body>
+
+</html>
