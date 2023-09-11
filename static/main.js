@@ -173,19 +173,19 @@ document.addEventListener("DOMContentLoaded", function () {
 
 	// MAP SECTION //
 	// Initialize map
-	var map = L.map('map').setView([47.3769, 8.5417], 10); // Zurich coordinates and zoom level
+	// var map = L.map('map').setView([47.3769, 8.5417], 10); // Zurich coordinates and zoom level
 
-	// Add basemap layer
-	L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-		attribution: '© OpenStreetMap contributors'
-	}).addTo(map);
+	// // Add basemap layer
+	// L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+	// 	attribution: '© OpenStreetMap contributors'
+	// }).addTo(map);
+
 
 
 	// Handle address form submission
 	var addressForm = document.getElementById('address-form');
 	addressForm.addEventListener('submit', function (event) {
 		event.preventDefault();
-
 		var addressInput = document.getElementById('address');
 		var userAddress = addressInput.value;
 
@@ -193,46 +193,22 @@ document.addEventListener("DOMContentLoaded", function () {
 		fetch('/geocode', {
 			method: 'POST',
 			headers: {
-				'Content-Type': 'application/x-www-form-urlencoded',
+				'Content-Type': 'application/json',
 			},
-			body: 'address=' + encodeURIComponent(userAddress),
+			body: JSON.stringify({ address: userAddress }),
 		})
 			.then(response => response.json())
 			.then(data => {
-				var latitude = data.latitude;
-				var longitude = data.longitude;
-
-				// Update map visualization with user's location and solar panel area
-				map.setView([latitude, longitude], 18); // Zoom in closer to user's location
-
-				// Call the /calculate_solar_panel API endpoint to get solar panel area
-				fetch('/calculate_solar_panel?latitude=' + latitude + '&longitude=' + longitude)
-					.then(response => response.json())
-					.then(data => {
-						var solarPanelArea = data.solar_panel_area;
-
-						// Add a polygon to represent the solar panel area
-						var solarPanelPolygon = L.polygon([
-							[latitude + 0.0005, longitude - 0.0005],
-							[latitude - 0.0005, longitude - 0.0005],
-							[latitude - 0.0005, longitude + 0.0005],
-							[latitude + 0.0005, longitude + 0.0005]
-						]).addTo(map);
-
-						// Enable form submission again
-						addressForm.querySelector('button').disabled = false;
-					})
-					.catch(error => {
-						console.error('Error in /calculate_solar_panel:', error);
-						// Enable form submission again
-						addressForm.querySelector('button').disabled = false;
-					});
+				if (data.latitude && data.longitude) {
+					// Update the map iframe with the new map
+					const mapUrl = `/dynamic_map?latitude=${data.latitude}&longitude=${data.longitude}`;
+					document.getElementById("map").src = mapUrl;
+				}
 			})
 			.catch(error => {
 				console.error('Error in address geocoding:', error);
 			});
 	});
-
 
 
 

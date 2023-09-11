@@ -131,9 +131,9 @@ body {
 
 /* Map Section */
 #map {
-	height: 400px;
-	width: 50%;
 	margin: 10px;
+	border: 0px;
+	border-radius: 10px;
 }
 
 #map-section {
