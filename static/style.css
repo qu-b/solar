@@ -14,6 +14,8 @@ input[type="number"] {
 	font-family: 'Climate Crisis', cursive;
 	text-align: center;
 	margin-bottom: 20px;
+	color: #555;
+
 }
 
 .title h1 {
@@ -24,12 +26,29 @@ input[type="number"] {
 .title-line {
 	width: 60px;
 	height: 1px;
-	background-color: #5b5b5b;
+	background-color: #555;
 	margin: 0 auto;
+	color: #555;
+}
+
+.subtitle-line {
+	width: 50px;
+	height: 1px;
+	background-color: rgba(85, 85, 85, 0.35);
+	margin: 5px auto;
 }
 
 body {
 	font-family: 'PT Sans Narrow', sans-serif;
+	color: #555;
+
+}
+
+.description {
+	text-align: center;
+	width: 80%;
+	margin-left: auto;
+	margin-right: auto;
 }
 
 /* Common module styles */
@@ -37,7 +56,6 @@ body {
 	background-color: #ffffff;
 	border-radius: 10px;
 	padding: 20px;
-	box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
 	flex: 1;
 	margin-bottom: 20px;
 	border: 1px solid #ffea61;
@@ -63,7 +81,6 @@ body {
 	background-color: #ffffff;
 	border-radius: 10px;
 	padding: 20px;
-	box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
 	margin-bottom: 20px;
 	border: 1px solid #ffea61;
 }
@@ -134,6 +151,13 @@ body {
 	margin: 10px;
 	border: 0px;
 	border-radius: 10px;
+	max-width: 100%;
+}
+
+#leaflet-map {
+	width: 80%;
+	height: 50vh;
+	max-height: 400px;
 }
 
 #map-section {
@@ -141,11 +165,227 @@ body {
 	background-color: #ffffff;
 	border-radius: 10px;
 	padding: 20px;
-	box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
 	margin-bottom: 20px;
 	border: 1px solid #ffea61;
 	display: flex;
 	flex-wrap: wrap;
 	gap: 20px;
 	max-width: 768px;
+	align-items: center;
+	justify-content: center;
+	min-height: 400px;
+	width: 95%;
+}
+
+#selected-address {
+	text-align: center;
+	font-size: 1.6em;
+	margin-bottom: 10px;
+}
+
+/* Autocomplete */
+.autocomplete-dropdown {
+	max-height: 200px;
+	overflow-y: auto;
+	border: 1px solid #ccc;
+	display: none;
+}
+
+.autocomplete-item {
+	padding: 5px;
+	cursor: pointer;
+}
+
+/* Custom label style */
+.address-label {
+	font-size: 1.6em;
+	text-align: center;
+	margin-bottom: 1em;
+	color: #555;
+}
+
+#address-info div {
+	display: block;
+}
+
+/* Custom input style */
+.autocomplete-input {
+	width: 75%;
+	padding: 0.8em;
+	font-size: 1em;
+	border-radius: 5px;
+	border: 1px solid #ccc;
+	margin-bottom: 1em;
+}
+
+/* Center the form in the module */
+#address-form {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+}
+
+/* Style the autocomplete dropdown */
+.autocomplete-dropdown {
+	width: 75%;
+	max-height: 200px;
+	overflow-y: auto;
+	border: 1px solid #ccc;
+	border-radius: 5px;
+	display: none;
+}
+
+.autocomplete-item {
+	padding: 0.5em;
+	cursor: pointer;
+}
+
+/* Media Queries for Responsiveness */
+@media only screen and (max-width: 768px) {
+	.calculator-container {
+		flex-direction: column;
+	}
+
+	.calculator-module {
+		width: 100%;
+	}
+}
+
+/* Style for Info Box */
+#info-section {
+	display: flex;
+	align-items: stretch;
+	flex-direction: row;
+	width: 600px;
+	justify-content: space-between;
+	text-align: center;
+
+}
+
+.info-box {
+	border: 1px solid #ccc;
+	border-radius: 5px;
+	text-align: center;
+	color: #555;
+}
+
+
+/* Style for the suitability value inside the box */
+#suitability-value {
+	padding: 1.5em;
+}
+
+/* Style for different suitability levels */
+#suitability-box.excellent {
+	background-color: rgba(255, 0, 0, 0.7);
+	color: #555;
+
+}
+
+#suitability-box.very-high {
+	background-color: rgba(255, 140, 0, 0.7);
+	color: #555;
+
+}
+
+#suitability-box.high {
+	background-color: rgba(255, 165, 0, 0.7);
+	color: #555;
+
+}
+
+#suitability-box.medium {
+	background-color: rgba(255, 255, 0, 0.7);
+	color: #555;
+}
+
+#suitability-box.low {
+	background-color: rgba(173, 216, 230, 0.7);
+	color: #555;
+
+}
+
+/* Style for the monetary value inside the box */
+#monetary-value {
+	padding: 1.5em;
+}
+
+/* Style for the placeholder inside the monetary value */
+#monetary-placeholder {
+	font-weight: bold;
+}
+
+/* Roof Data Stuff */
+#half-surface,
+#three-quarter-surface,
+#full-surface,
+#roof-area,
+#roof-pitch,
+#orientation,
+#solar-radiation,
+#average-solar-radiation {
+	font-size: 2em;
+	/* Adjust to your needs */
+}
+
+#notyetlocalized-text {
+	text-align: center;
+	color: #555;
+}
+
+.module-title {
+	margin-bottom: 20px;
+	font-size: 24px;
+}
+
+.data-content {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: space-between;
+	width: 80%;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.data-content p {
+	display: flex;
+	flex-direction: column-reverse;
+	align-items: center;
+	margin: 10px 0;
+	padding: 30px;
+	text-align: center;
+}
+
+.data-content span {
+	font-size: 20px;
+	margin-bottom: 5px;
+}
+
+/* Icons */
+.icon-container {
+	display: block;
+	margin: 0 auto 10px;
+	width: 50px;
+	height: auto;
+}
+
+#roof-icon {
+	display: block;
+	margin: 0 auto 10px;
+	width: 50px;
+	height: auto;
+}
+
+#plug-icon .st0,
+#sun-icon .st0,
+#roof-icon .st0 {
+	fill: rgba(85, 85, 85, 1);
+
+}
+
+#icon-container .st0 {
+	fill: rgba(85, 85, 85, 1);
+
 }

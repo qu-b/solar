@@ -3,7 +3,7 @@ import psycopg2
 
 # Connect to the PostGIS database
 connection = psycopg2.connect(
-    dbname="solardb", user="Francis", password="Hkylife6!", host="localhost"
+    dbname="solardb", user="root", password="1234", host="localhost"
 )
 
 # Open the GPKG data source
