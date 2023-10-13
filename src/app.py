@@ -19,11 +19,8 @@ def calculator():
 
 @app.route('/data/opendata/<filename>')
 def serve_geojson(filename):
-    # Calculate the absolute path to the data/opendata directory
     base_dir = os.path.dirname(os.path.abspath(__file__))
     file_path = os.path.join(base_dir, '..', 'data', 'opendata', filename)
-
-    # Serve the requested file
     return send_file(file_path, as_attachment=True)
 
 
@@ -60,20 +57,15 @@ def geocode():
 def autocomplete():
     query = request.json.get('query', '')
     api_key = "AIzaSyAc_eJ1jZXZT1JGIV48S2FYcJCS2MlnU4E"
-
-    # Add types and components parameters to limit suggestions to addresses in Switzerland
     response = requests.get(
         f"https://maps.googleapis.com/maps/api/place/autocomplete/json?input={query}&types=address&components=country:ch&key={api_key}"
     )
     suggestions = response.json().get('predictions', [])
-
-    # Extract and return relevant info
     suggestions_list = [{"description": s["description"],
                          "id": s["place_id"]} for s in suggestions]
     return jsonify(suggestions_list)
 
 
-# app.py
 @app.route('/geojson_data')
 def geojson_data():
     latitude = request.args.get('latitude', type=float, default=46.9465)
