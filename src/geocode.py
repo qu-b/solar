@@ -1,9 +1,8 @@
 import requests
 from flask import jsonify
+import os
 
-
-API_KEY = 'AIzaSyAc_eJ1jZXZT1JGIV48S2FYcJCS2MlnU4E'
-
+API_KEY = os.environ.get('GOOGLE_MAPS_API_KEY')
 
 def fetch_geocode_data(address=None, latitude=None, longitude=None):
     if address:

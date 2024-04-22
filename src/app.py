@@ -5,10 +5,14 @@ from solar_calculations import calculate_solar_energy
 from generate_map import generate_folium_map, fetch_roof_data, assign_colors
 import requests
 import os
+from dotenv import load_dotenv
 
-app = Flask(__name__, template_folder='/Users/Francis/Documents/Dev/Apps/solaire/templates',
-            static_folder='/Users/Francis/Documents/Dev/Apps/solaire/static')
-app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://postgres:1234@localhost/solardb'
+load_dotenv()
+
+app = Flask(__name__,
+            template_folder=os.path.join(os.path.dirname(__file__), 'templates'),
+            static_folder=os.path.join(os.path.dirname(__file__), 'static'))
+app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://solar:solar@localhost/solardb'
 db = SQLAlchemy(app)
 
 
@@ -17,10 +21,10 @@ def calculator():
     return render_template('index.html')
 
 
-@app.route('/data/opendata/<filename>')
+@app.route('/data/<filename>')
 def serve_geojson(filename):
     base_dir = os.path.dirname(os.path.abspath(__file__))
-    file_path = os.path.join(base_dir, '..', 'data', 'opendata', filename)
+    file_path = os.path.join(base_dir, 'data', filename)
     return send_file(file_path, as_attachment=True)
 
 
@@ -56,7 +60,7 @@ def geocode():
 @app.route('/autocomplete', methods=['POST'])
 def autocomplete():
     query = request.json.get('query', '')
-    api_key = "AIzaSyAc_eJ1jZXZT1JGIV48S2FYcJCS2MlnU4E"
+    api_key = os.environ.get('GOOGLE_MAPS_API_KEY')
     response = requests.get(
         f"https://maps.googleapis.com/maps/api/place/autocomplete/json?input={query}&types=address&components=country:ch&key={api_key}"
     )

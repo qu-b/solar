@@ -42,7 +42,7 @@ class MapHandler {
 
 	async addSwitzerlandLayer() {
 		if (this.switzerlandLayer) return;
-		const response = await fetch('/data/opendata/ch.geojson');
+		const response = await fetch('/data/ch.geojson');
 		const switzerlandGeoJSON = await response.json();
 		this.switzerlandLayer = L.geoJSON(switzerlandGeoJSON, {
 			style: this.getSwitzerlandLayerStyle()
@@ -172,7 +172,7 @@ class MapHandler {
 	}
 
 	async fetchAndRenderGeoJson(latitude, longitude) {
-		console.log("fetchAndRenderGeoJson - Latitude: ", latitude, "Type: ", typeof latitude);
+		// console.log("fetchAndRenderGeoJson - Latitude: ", latitude, "Type: ", typeof latitude);
 		const cacheKey = `${latitude.toFixed(4)},${longitude.toFixed(4)}`;
 		if (this.cache[cacheKey]) {
 			this.renderGeoJson(this.cache[cacheKey]);

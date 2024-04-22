@@ -1,6 +1,5 @@
 import { ensureNonNegativeValue } from './utils.js';
-import { EnergyOutput } from './energy.js';
-import { EnergySavings } from './energy.js';
+import { EnergyOutput, EnergySavings } from './energy.js';
 import MapHandler from './map.js';
 import AutocompleteHandler from './autocomplete.js';
 

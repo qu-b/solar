@@ -1,3 +1,6 @@
-data
 __pycache__
 /*.pyc
+solar.code-workspace
+.env
+SOLKAT_DACH.gpkg
+solar
