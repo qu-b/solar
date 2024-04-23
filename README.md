@@ -54,7 +54,6 @@ Download the data from the provided link and import it into the PostGIS database
 ```bash
 ogr2ogr -f "PostgreSQL" PG:"dbname=solardb host=localhost" "/path/to/your/SOLKAT_DACH.gpkg"
 ```
-Make sure to update the `gpkg_file` variable in the `import_data.py` script with the correct path to your GPKG file before running the script.
 
 ### 4.7 Create a role to connect to PostgreSQL
 ```bash
@@ -68,5 +67,11 @@ psql -d solardb -c "GRANT SELECT ON TABLE solkat_ch_dach TO solar;"
 python app.py
 ```
 
-# Comments
-This was a fun project to learn about Flask, PostGIS, and various Python libraries. Feel free to comment, make suggestions, add to or improve the project in any way you see fit.
+![Screenshot of the app](/solar-app.png)
+
+# Contributing
+We welcome contributions and suggestions to improve this project. If you have any ideas or issues, please feel free to open an issue or create a pull request. For major changes, please open an issue first to discuss what you would like to change.
+
+
+# License
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
