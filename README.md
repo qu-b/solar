@@ -3,8 +3,8 @@ This project was created on MacOS and the guide below is therefore for MacOS onl
 
 ## 1. Clone the repository
 ``` bash
-git clone <repository_url>
-cd <repository_name>
+git clone [<repository_url>](https://github.com/qu-b/solar)
+cd solar
 ```
 ## 2. Environment Setup
 Create a Conda environment and install the required packages.
